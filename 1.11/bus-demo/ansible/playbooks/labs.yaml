@@ -1,0 +1,65 @@
+---
+- name: Install Labs
+  hosts: all
+  vars:
+    user: centos
+    group: centos
+    install_dir: /opt/dcos
+    home_dir: /home/centos
+    log_dir: /home/centos/log
+
+  tasks:
+    - name: Install Required Packages
+      sudo: true
+      apt:
+        update_cache: true
+        pkg: "{{ item }}"
+        state: present
+      with_items:
+        - wget
+        - unzip
+        - openjdk-7-jdk
+
+    - name: Create Group
+      sudo: true
+      group:
+        name: "{{group}}"
+        state: present
+
+    - name: Create Log Directory
+      sudo: false
+      file:
+        path: "{{log_dir}}"
+        owner: "{{user}}"
+        group: "{{group}}"
+        mode: 0755
+        state: directory
+
+    - name: Download jq
+      get_url:
+        url:  https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+        dest: "{{ install_dir }}"
+
+    - name: Give jq 755 permissions (u+x)
+      sudo: true
+      command: chmod 755 "{{ install_dir }}"/jq-linux64
+
+    - name: Change jq-linux64 to jq
+      sudo: true 
+      command: mv "{{ install_dir }}"/jq-linux64 /usr/bin/jq
+
+    - name: Extract Zookeeper
+      sudo: true
+      unarchive:
+        src: /tmp/zookeeper-{{version}}.tar.gz
+        dest: /opt/
+        copy: no
+
+    - name: Remove Existing Install
+      sudo: true
+      command: rm -rf "{{ install_dir }}"
+
+    - name: Download Lab Github files
+      get_url:
+        url:  https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+        dest: "{{ home_dir }}"

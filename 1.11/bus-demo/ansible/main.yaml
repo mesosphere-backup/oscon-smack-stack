@@ -1,0 +1,12 @@
+---
+- name: Top level play for the entire installation
+  hosts: all
+  user: centos
+
+- import_playbook: playbooks/selinux.yaml
+- import_playbook: playbooks/groups.yaml
+- import_playbook: playbooks/docker.yaml
+- import_playbook: playbooks/utilities.yaml
+- import_playbook: playbooks/dcos-all-preinstall.yaml
+- import_playbook: playbooks/dcos-bootstrap-preinstall.yaml
+- import_playbook: playbooks/dcos-cluster-install.yaml
