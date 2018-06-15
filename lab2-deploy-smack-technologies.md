@@ -1,6 +1,7 @@
 # Lab 2: Install SMACK Technologies
 
-In this lab you will install three certified packages from the DC/OS catalog that will be part of your SMACK Stack: 
+In this lab you will install three of the SMACK Stack technoloiges, which are
+certified packages in the DC/OS catalog: 
 
 1. Cassandra
 2. Kafka
@@ -8,8 +9,9 @@ In this lab you will install three certified packages from the DC/OS catalog tha
 
 ## Download the Install Scripts
 
-On the bootstrap node, download the `1.11` folder from the OSCON SMACK Stack
-github repo.
+1. On the bootstrap node, clone the OSCON SMACK Stack tutorial
+
+`git clone https://github.com/mesosphere/oscon-smack-stack.git`
 
 The folder will contain the scripts that automate the install of the SMACK
 stack and an application that uses the stack. In this lab, we will only be
@@ -24,15 +26,18 @@ and select `remove` from the menu.
 
 ## Excute the SMACK Script
 
-First, change into the `1.11` folder:
+1. First, change into the `1.11` folder:
 
 `cd 1.11`
 
-Next execute the script and follow the prompts:
+2. Next execute the script and follow the prompts:
 
 `./install-smack.sh`
 
 This process will take several minutes.
+
+The script will install Cassandra, Kafka, and Spark. Through the prompts you
+will also get familiar with the DC/OS CLI.
 
 ## Conclusion
 

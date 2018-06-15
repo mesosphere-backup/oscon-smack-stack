@@ -14,27 +14,27 @@ For this lab you will need your server assigments and ssh password or pem file. 
 
 ## Use Ansible to Install DC/OS
 
-First, ssh to your bootstrap node and then clone the following repo:
+1. First, ssh to your bootstrap node and then clone the following repo:
 
 `git clone https://bitbucket.org/pumphouse_p/dcos-ansible.git`
 
-Change into the `dcos-ansible` directory:
+2. Change into the `dcos-ansible` directory:
 
 `cd dcos-ansible`
 
-If you have time feel free to explore the `dcos-ansible` directory. It will
-contain the playbooks,....
+If you have time, feel free to explore the `dcos-ansible` directory. It will
+contain the playbooks install and configure your DC/OS cluster.
 
-Next, update the host files with your server's private IPs.
+3. Next, update the host files with your server's private IPs.
 
 `vim hosts`
 
-Since we have not connected to these servers perviously, we will want to
+4. Since we have not connected to these servers perviously, we will want to
 disable the host key checking:
 
 `export ANSIBLE_HOST_KEY_CHECKING=False`
 
-Finally, run the playbook with:
+5. Finally, run the playbook with:
 
 `ansible-playbook -i hosts --private-key <path_to_ssh_key> main.yaml`
 
@@ -56,7 +56,7 @@ In the pop-up window, toggle to the "Linux" instructions. Finally, copy and
 paste the instructions to the bootstrap node. After the CLI has been installed,
 you will be prompted for log in credentials. 
 
-## Optional: Explore the Cluster
+### Optional: Explore the Cluster
 
 Now that the Cluster is ready for the remainder of the workshop, take some time
 to check out the DC/OS UI. Particularly, notice overview page, nodes page, and
@@ -79,7 +79,7 @@ After exploring the DC/OS UI, check out the DC/OS CLI. Learn the available comma
 2. `dcos marathon app list`. This will show you all the running applications in the cluster. You can issue other marathon commands to mangae your applications including; adding new applications, deleting applications, monitoring deployments.
 3. `dcos`. 
 
-## Optional: Install a Couple Certified Packages
+### Optional: Install a Couple Certified Packages
 
 DC/OS provides two quick options for installing catalog packages; the DC/OS UI
 and DC/OS CLI. 
