@@ -1,6 +1,6 @@
 # Lab 2: Install SMACK Technologies on Your DC/OS Cluster
 
-In this lab you will install three certified packages from the DC/OS catalog that will be part of your SMACK Stack. 
+In this lab you will install three certified packages from the DC/OS catalog that will be part of your SMACK Stack: 
 
 1. Cassandra
 2. Kafka
