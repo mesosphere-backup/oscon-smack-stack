@@ -6,7 +6,6 @@ In this lab you will install three certified packages from the DC/OS catalog tha
 2. Kafka
 3. Spark
 
-
 ## Download the Install Scripts
 
 On the bootstrap node, download the `1.11` folder from the OSCON SMACK Stack
