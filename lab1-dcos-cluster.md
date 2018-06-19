@@ -3,8 +3,8 @@
 In this lab you will install and configure 7 AWS instances as your DC/OS
 cluster. Installing and configuring the DC/OS Cluster will be a 3 step process:
 
-1. Clone the Ansible scripts onto the boostrap node.
-2. Add the server's private IPadresses to the playbooks, then run Ansible.
+1. Add the server's private IPadresses to the playbooks.
+2. Run Ansible.
 3. Install the DC/OS CLI on the bootstrap node.
 
 Finally, if you have extra time you can explore the DC/OS UI, try out the DC/OS
@@ -14,35 +14,39 @@ For this lab you will need your server assigments and ssh password or pem file. 
 
 ## Use Ansible to Install DC/OS
 
-1. First, ssh to your bootstrap node and then clone the following repo:
+First, we will need to install our cluster with DC/OS 1.11.
 
-`git clone https://bitbucket.org/pumphouse_p/dcos-ansible.git`
+Since we reviewed the manual advanced
+installation, we have automated our installation with Ansible. This will allow you to quickly
+and easily complete the install process from the bootstrap node. The bootstrap node aleardy has Ansible installed and the necessary scripts to install
+DC/OS on the master and agent nodes. 
 
-2. Change into the `dcos-ansible` directory:
+**Step 1**
 
-`cd dcos-ansible`
+`ssh` in to your bootstrap node with the ssh user ssh password
+credentials.
 
-If you have time, feel free to explore the `dcos-ansible` directory. It will
-contain the playbooks install and configure your DC/OS cluster.
+**Step 2**
 
-3. Next, update the host files with your server's private IPs.
+`cd` into `~/tools/dcos-ansible` directory.
 
-`vim hosts`
+`cd ~/tools/dcos-ansible`
 
-4. Since we have not connected to these servers perviously, we will want to
-disable the host key checking:
+Next, modify the `hosts` file
+to include the private IP addresses for your nodes under their respective
+sections in the document.
 
-`export ANSIBLE_HOST_KEY_CHECKING=False`
+**Step 3**
 
-5. Finally, run the playbook with:
+Execute the following command to start the installation of DC/OS::
 
-`ansible-playbook -i hosts --private-key <path_to_ssh_key> main.yaml`
+`ansible-playbook -i hosts --private-key student_* --extra-vars
+"dcos_version=dcos-1.11" main.yaml`
 
 This process will take between 5 - 10 minutes. You will know the installastion
 is complete when you are able to access the DC/OS UI with the master's public
 IP `http://master.public.ip`. You will need to create a log in. 
 
-The Ansible playbooks that you used were created by the Education team at Mesosphere and are open source.
 
 ## Configure the Cluster
 
