@@ -1,16 +1,16 @@
 # Lab 1: Build Your DC/OS Cluster
 
-In this lab you will install and configure 7 AWS instances as your DC/OS
+In this lab you will configure 7 AWS instances as your DC/OS
 cluster. Installing and configuring the DC/OS Cluster will be a 3 step process:
 
-1. Add the server's private IPadresses to the playbooks.
+1. Add the server's private IP Adresses to the playbooks.
 2. Run Ansible.
 3. Install the DC/OS CLI on the bootstrap node.
 
 Finally, if you have extra time you can explore the DC/OS UI, try out the DC/OS
 CLI, and installing a couple of Catalog packages.
 
-For this lab you will need your server assigments and ssh password or pem file. The server assignments will include both the private and public IPAdresses of all 7 nodes. 
+For this lab you will need your server assigments and ssh password or pem file. The server assignments will include both the private and public IP Adresses of all 7 nodes. 
 
 ## Use Ansible to Install DC/OS
 
@@ -23,7 +23,7 @@ DC/OS on the master and agent nodes.
 
 **Step 1**
 
-`ssh` in to your bootstrap node with the ssh user ssh password
+`ssh` in to your bootstrap node with the ssh user and ssh password
 credentials.
 
 **Step 2**
@@ -45,7 +45,8 @@ Execute the following command to start the installation of DC/OS::
 
 This process will take between 5 - 10 minutes. You will know the installastion
 is complete when you are able to access the DC/OS UI with the master's public
-IP `http://master.public.ip`. You will need to create a log in. 
+IP `http://master.public.ip`. Use the username `bootstrapuser` and password
+`deleteme`. 
 
 
 ## Configure the Cluster
@@ -53,12 +54,19 @@ IP `http://master.public.ip`. You will need to create a log in.
 Now that you can access the DC/OS UI, you can use the copy & paste instructions
 to install the DC/OS CLI on the bootstrap node. 
 
+**Step 1**
+
 In the upper left corner of the UI, click on the drop-down menu. Then select
 the "Install DC/OS CLI".
 
-In the pop-up window, toggle to the "Linux" instructions. Finally, copy and
-paste the instructions to the bootstrap node. After the CLI has been installed,
-you will be prompted for log in credentials. 
+In the pop-up window toggle to the "Linux" instructions. 
+
+**Step 2** 
+Copy and paste the instructions to the bootstrap node. After the CLI has been installed,
+you will be prompted for log in credentials:
+
+* username: `bootstrapuser`
+* password: `deleteme` 
 
 ### Optional: Explore the Cluster
 
@@ -116,5 +124,5 @@ We will learn more about the subcommands in the SMACK Stack Lab.
 Since we will be automating the install of Cassandra and Kafka in the next lab,
 go ahead and delete the services now. 
 
-
+Continue to [Lab 2](https://github.com/mesosphere/oscon-smack-stack/blob/master/lab2-deploy-smack-technologies.md)
 

@@ -1,6 +1,6 @@
 # Lab 2: Install SMACK Technologies
 
-In this lab you will install three of the SMACK Stack technoloiges, which are
+In this lab you will initiate a script that installs three of the SMACK Stack technoloiges, which are
 certified packages in the DC/OS catalog: 
 
 1. Cassandra
@@ -22,15 +22,20 @@ installed. If you have Cassandra, Kafka, or Spark installed, the script will
 fail.
 
 To remove any packages, simply navigate to the `services` page in the DC/OS UI
-and select `remove` from the menu.
+and select `delete` from the menu on the right of each service name.
 
 ## Excute the SMACK Script
 
-1. First, change into the `1.11` folder:
+**Step 1**
 
-`cd 1.11`
+First, change into the `1.11` folder:
 
-2. Next execute the script and follow the prompts:
+`cd oscon-smack-stack/1.11`
+
+
+**Step 2**
+
+Next execute the script and follow the prompts:
 
 `./install-smack.sh`
 
@@ -44,5 +49,4 @@ will also get familiar with the DC/OS CLI.
 Monitor the installation in the DC/OS UI. All the services should be running
 and in a healthy state. Please notifiy an instructor if you have any concerns.
 
-
-
+Continue to [Lab 3](https://github.com/mesosphere/oscon-smack-stack/blob/master/lab3-using-smack-stack.md)
