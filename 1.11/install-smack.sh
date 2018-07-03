@@ -117,8 +117,8 @@ clear
 echo
 echo "Now lets view the conections we have to the database"
 echo
-echo "            dcos cassandra connection"
-dcos cassandra connection
+echo "            dcos cassandra endpoints native-client"
+dcos cassandra endpoints native-client
 echo
 echo "We are going to wait 30 seconds and repeat to see the progress of the installation"
 sleep 30

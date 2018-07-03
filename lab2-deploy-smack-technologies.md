@@ -9,7 +9,9 @@ certified packages in the DC/OS catalog:
 
 ## Download the Install Scripts
 
-1. On the bootstrap node, clone the OSCON SMACK Stack tutorial
+**Step 1**
+
+On the bootstrap node, clone the OSCON SMACK Stack tutorial
 
 `git clone https://github.com/mesosphere/oscon-smack-stack.git`
 
@@ -39,10 +41,10 @@ Next execute the script and follow the prompts:
 
 `./install-smack.sh`
 
-This process will take several minutes.
+This process will take several minutes and you will need to follow a series
+of prompts to complete the install.
 
-The script will install Cassandra, Kafka, and Spark. Through the prompts you
-will also get familiar with the DC/OS CLI.
+The script will install Cassandra, Kafka, and Spark. 
 
 ## Conclusion
 

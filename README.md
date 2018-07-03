@@ -26,7 +26,7 @@ The goals of this lab are:
 1. To see how easy it is to automate the install of catalog packages.
 2. Setup...
 
-Continue to [lab 2](https://github.com/mesosphere/oscon-smack-stack/blob/master/lab2-deploy-smack-technologies)
+Continue to [lab 2](https://github.com/mesosphere/oscon-smack-stack/blob/master/lab2-deploy-smack-technologies.md)
 
 ## Lab 3: Using Your SMACK Stack.
 
@@ -37,4 +37,4 @@ The goals of this labe are:
 1. Deploy an application that uses the SMACK stack.
 2. Monitor the services using the DC/OS UI.
 
-Continue to [lab 3](https://github.com/mesosphere/oscon-smack-stack/blob/master/lab3-using-smack-stack)   
+Continue to [lab 3](https://github.com/mesosphere/oscon-smack-stack/blob/master/lab3-using-smack-stack.md)   

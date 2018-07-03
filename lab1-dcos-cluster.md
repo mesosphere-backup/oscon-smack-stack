@@ -28,7 +28,7 @@ credentials.
 
 **Step 2**
 
-`cd` into `~/tools/dcos-ansible` directory.
+Change into `/tools/dcos-ansible` directory.
 
 `cd ~/tools/dcos-ansible`
 
@@ -38,14 +38,14 @@ sections in the document.
 
 **Step 3**
 
-Execute the following command to start the installation of DC/OS::
+Execute the following command to start the installation of DC/OS:
 
 `ansible-playbook -i hosts --private-key student_* --extra-vars
 "dcos_version=dcos-1.11" main.yaml`
 
-This process will take between 5 - 10 minutes. You will know the installastion
+This process will take less than 10 minutes. You will know the installastion
 is complete when you are able to access the DC/OS UI with the master's public
-IP `http://master.public.ip`. Use the username `bootstrapuser` and password
+IP `http://master.public.ip`. To login, enter the username `bootstrapuser` and password
 `deleteme`. 
 
 
@@ -56,10 +56,8 @@ to install the DC/OS CLI on the bootstrap node.
 
 **Step 1**
 
-In the upper left corner of the UI, click on the drop-down menu. Then select
-the "Install DC/OS CLI".
-
-In the pop-up window toggle to the "Linux" instructions. 
+In the upper left corner of the UI click on the drop-down menu. Select
+the "Install DC/OS CLI", then toggle to the "Linux" instructions in the pop-up window. 
 
 **Step 2** 
 Copy and paste the instructions to the bootstrap node. After the CLI has been installed,
@@ -68,11 +66,35 @@ you will be prompted for log in credentials:
 * username: `bootstrapuser`
 * password: `deleteme` 
 
-### Optional: Explore the Cluster
+Once you have logged you will see a list of available commands:
+
+```
+Command line utility for the Mesosphere Datacenter Operating
+System (DC/OS). The Mesosphere DC/OS is a distributed operating
+system built around Apache Mesos. This utility provides tools
+for easy management of a DC/OS installation.
+
+Available DC/OS commands:
+
+	auth           	Authenticate to DC/OS cluster
+	cluster        	Manage your DC/OS clusters
+	config         	Manage the DC/OS configuration file
+	help           	Display help information about DC/OS
+	job            	Deploy and manage jobs in DC/OS
+	marathon       	Deploy and manage applications to DC/OS
+	node           	View DC/OS node information
+	package        	Install and manage DC/OS software packages
+	service        	Manage DC/OS services
+	task           	Manage DC/OS tasks
+
+Get detailed command description with 'dcos <command> --help'.
+```
+
+## Optional: Explore the Cluster
 
 Now that the Cluster is ready for the remainder of the workshop, take some time
-to check out the DC/OS UI. Particularly, notice overview page, nodes page, and
-services page. 
+to check out the DC/OS UI. Particularly, notice the "overview page", "nodes
+page", and "services page". 
 
 The overview page is a great place to get quick data on the cluster. You can
 see the number of agent nodes in the cluster. You can also see the component
@@ -85,13 +107,15 @@ including; region, health, and tasks running.
 The services page will show you all running servies with a quick view of their
 resource utilization. 
 
-After exploring the DC/OS UI, check out the DC/OS CLI. Learn the available commands with dcos --help. A few things to try are:
+After exploring the DC/OS UI, check out the DC/OS CLI. Learn the available
+commands with `dcos --help`. A few things to try are:
 
 1. `dcos node`. This will list all the nodes in the cluster including masters.
 2. `dcos marathon app list`. This will show you all the running applications in the cluster. You can issue other marathon commands to mangae your applications including; adding new applications, deleting applications, monitoring deployments.
-3. `dcos`. 
+3. `dcos cluster list`. This will return cluster information on all available
+clusters.  
 
-### Optional: Install a Couple Certified Packages
+## Optional: Install a Couple Certified Packages
 
 DC/OS provides two quick options for installing catalog packages; the DC/OS UI
 and DC/OS CLI. 

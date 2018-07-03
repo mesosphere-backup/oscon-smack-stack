@@ -61,7 +61,7 @@ echo '      "forcePullImage": true                                            '
 echo '    }                                                                   '
 echo '  },                                                                    ' 
 echo '  "env": {                                                              '
-echo '    "CASSANDRA_CONNECT": "node.cassandra.l4lb.thisdcos.directory:9042", '
+echo '    "CASSANDRA_CONNECT": "node-0-server.cassandra.autoip.dcos.thisdcos.directory:9042", '
 echo '    "KAFKA_CONNECT": "broker.kafka.l4lb.thisdcos.directory:9092"        '
 echo '  }                                                                     '
 echo '}                                                                       '
@@ -83,8 +83,8 @@ echo " We will Use this connection string to connect to the kafka brokers. This 
 echo " The VIP uses an internal Load Balancer (Minuteman) and round robins to each broker."
 echo " The same approach applies for the connection of the cassandra nodes. "
 echo
-echo "                         dcos cassandra connection"
-dcos cassandra connection
+echo "                         dcos cassandra endpoints native-client"
+dcos cassandra endpoints native-client
 echo
 read -r -p "Hit any key and <return> to continue" response
 clear
