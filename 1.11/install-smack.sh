@@ -80,12 +80,12 @@ echo "The general rule on framework versions is the higher the better.  There ar
 echo " support may suggest a specific framework version.  The component version is what you are familiar with"
 echo "for any given system.  Now we will install a specific package versioni for Apache Cassandra: 1.0.25-3.0.10"
 echo
-echo "            dcos package install cassandra --package-version=1.0.25-3.0.10 --yes"
+echo "            dcos package install cassandra --package-version=2.1.0-3.0.16 --yes"
 echo
 read -r -p "Hit any key to install Cassandra and <return> to contine" response
 clear
 echo
-dcos package install cassandra --package-version=1.0.25-3.0.10 --yes
+dcos package install cassandra --package-version=2.1.0-3.0.16 --yes
 sleep 10
 echo
 read -r -p "Hit any key and <return> to contine" response

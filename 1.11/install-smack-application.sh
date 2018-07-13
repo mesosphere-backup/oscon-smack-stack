@@ -119,10 +119,10 @@ dcos kafka endpoints broker | jq .vip
 echo
 echo "This will produce a connection with host and port like the following: _broker.kafka.l4lb.thisdcos.directory:9092_"
 echo
-echo "The same has to be applied for cassandra: "
+echo "The same has to be applied for cassandra, except we will use a single node: "
 echo
-echo "         dcos cassandra connection | jq .vip  "
-dcos cassandra connection | jq .vip 
+echo "        dcos cassandra endpoint native-client | jq .dns  "
+dcos cassandra endpoint native-client | jq .dns
 echo
 echo
 echo "VIPS inside the cluster make microservice to microservice fast and efficient.  The Minuteman LB also respects the "
@@ -136,9 +136,9 @@ dcos cli.  "
 echo
 echo "We will launch the Sprk job with the following CLI command..."
 echo
-echo "dcos spark run --submit-args='--driver-cores 0.1 --driver-memory 1024M --total-executor-cores 4 --class de.nierbeck.floating.data.stream.spark.KafkaToCassandraSparkApp https://oss.sonatype.org/content/repositories/snapshots/de/nierbeck/floating/data/spark-digest_2.11/0.2.1-SNAPSHOT/spark-digest_2.11-0.2.1-SNAPSHOT-assembly.jar METRO-Vehicles node.cassandra.l4lb.thisdcos.directory:9042 broker.kafka.l4lb.thisdcos.directory:9092' "
+echo "dcos spark run --submit-args='--driver-cores 0.1 --driver-memory 1024M --total-executor-cores 4 --class de.nierbeck.floating.data.stream.spark.KafkaToCassandraSparkApp https://oss.sonatype.org/content/repositories/snapshots/de/nierbeck/floating/data/spark-digest_2.11/0.2.1-SNAPSHOT/spark-digest_2.11-0.2.1-SNAPSHOT-assembly.jar METRO-Vehicles node-1-server.cassandra.autoip.dcos.thisdcos.directory:9042 broker.kafka.l4lb.thisdcos.directory:9092' "
 echo
-dcos spark run --submit-args='--driver-cores 0.1 --driver-memory 1024M --total-executor-cores 4 --class de.nierbeck.floating.data.stream.spark.KafkaToCassandraSparkApp https://oss.sonatype.org/content/repositories/snapshots/de/nierbeck/floating/data/spark-digest_2.11/0.2.1-SNAPSHOT/spark-digest_2.11-0.2.1-SNAPSHOT-assembly.jar METRO-Vehicles node.cassandra.l4lb.thisdcos.directory:9042 broker.kafka.l4lb.thisdcos.directory:9092'
+dcos spark run --submit-args='--driver-cores 0.1 --driver-memory 1024M --total-executor-cores 4 --class de.nierbeck.floating.data.stream.spark.KafkaToCassandraSparkApp https://oss.sonatype.org/content/repositories/snapshots/de/nierbeck/floating/data/spark-digest_2.11/0.2.1-SNAPSHOT/spark-digest_2.11-0.2.1-SNAPSHOT-assembly.jar METRO-Vehicles node-1-server.cassandra.autoip.dcos.thisdcos.directory:9042 broker.kafka.l4lb.thisdcos.directory:9092'
 echo
 echo "It is best to go to the WebUI and examine the Status of the running job.  To do this enter:"
 echo "                dcos spark webui"
@@ -148,24 +148,6 @@ echo
 echo "Use this URL to access the Spark Job Screen"
 echo
 echo
-echo "Here is a great script to run to find your Public Agents.  Two necessary prequisites for using this:"
-echo
-echo "One: install jq"
-echo "Two: add your private key to the authentication agent (ssh-add <your pem key>)"
-echo
-echo
-echo "This script obtains the Public Agent Mesos ID, then uses the DC/OS CLI to ssh into the Agent and get the public IP"
-echo
-echo "ssh-add ~/.ssh/mesosphere.pem"
-ssh-add ~/.ssh/mesosphere.pem
-SCRIPT=$(cat <<EOF
- for id in { $(dcos node --json | jq --raw-output '.[] | select(.attributes.public_ip == "true") | .id')}; do dcos node ssh --option StrictHostKeyChecking=no --option LogLevel=quiet --master-proxy --mesos-id=$id 'curl -s ifconfig.co' ; done 2>/dev/null
-EOF)
-echo $SCRIPT
-echo
-export PUBLICIP=`./publicAgentIP.sh`
-echo
-echo "Save off the Public IP, you will need it later"
 echo
 read -r -p "Hit any key and <return> to continue to the Demo Dashboard" response
 clear
@@ -187,7 +169,7 @@ DASHBOARD=$(cat <<EOS
     "slave_public"
   ],
   "env": {
-      "CASSANDRA_CONNECT": "node.cassandra.l4lb.thisdcos.directory:9042",
+      "CASSANDRA_CONNECT": "node-0-server.cassandra.autoip.dcos.thisdcos.directory:9042",
       "KAFKA_CONNECT": "broker.kafka.l4lb.thisdcos.directory:9092"
   },
   "dependencies": ["/oscon-smack/ingest"],

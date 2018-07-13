@@ -2,7 +2,7 @@
   "id": "init-cassandra-schema-job",
   "description": "Initialize cassandra database",
   "run": {
-    "cmd": "/opt/bus-demo/import_data.sh node-0.cassandra.mesos",
+    "cmd": "/opt/bus-demo/import_data.sh node-0-server.cassandra.autoip.dcos.thisdcos.directory",
     "cpus": 0.1,
     "mem": 256,
     "disk": 0,
